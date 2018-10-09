@@ -8,15 +8,15 @@ package perishible;
  *
  */
 public class Perishible {
-	int quantity;
+	int q;
 	public Perishible(int q) {
-		this.quantity = q;
+		this.q = q;
 	}
 	
-	public int getQuantity() {
-		return quantity;
+	public int getQ() {
+		return q;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setQ(int q) {
+		this.q = q;
 	}
 }

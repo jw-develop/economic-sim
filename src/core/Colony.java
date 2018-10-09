@@ -12,7 +12,6 @@ public class Colony {
 	}
 	private boolean deserted;
 	private int totaldays;
-	private int foodcount;
 	private ArrayList<Person> folks = new ArrayList<Person>();
 	public boolean isDeserted() {
 		return deserted;
@@ -28,15 +27,6 @@ public class Colony {
 	}
 	public void setTotaldays(int totaldays) {
 		this.totaldays = totaldays;
-	}
-	public int getFoodcount() {
-		return foodcount;
-	}
-	public void setFoodcount(int foodcount) {
-		this.foodcount = foodcount;
-	}
-	public void augFoodcount(int add) {
-		this.setFoodcount(this.foodcount+=add);
 	}
 	public ArrayList<Person> getFolks() {
 		return folks;
