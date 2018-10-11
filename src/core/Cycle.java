@@ -12,22 +12,27 @@ public class Cycle {
 	private int day;
 	private int food;
 	private ArrayList<Person> people;
+	private Person currentperson;
 	//Method for incrementing day.
 	public void nextDay(Colony colony) {
 		//Incrementing day.
 		colony.incTotaldays();
 		
-		//Fetching and printing vars
+		//Fetching and printing variables
 		day = colony.getTotaldays();
 		people = colony.getFolks();
-		food = colony.getFoodcount();
 		Env.p("Day %d - Current Food: %d - Member Count: %d\n",day,food,people.size());
 		
 		//Circuit through population
 		for (int i=0;i<people.size();i++) {
 			Person indiv = people.get(i);
-			String name = indiv.getSurname();
+			indiv.act(colony);
+			
+			
+			
 			if (!indiv.live(colony)) {
+				Person indiv = people.get(i);
+				String name = indiv.getSurname();
 				Env.p("",indiv.getFullname());
 				colony.killFolk(indiv);
 				if (people.isEmpty())
@@ -41,5 +46,10 @@ public class Cycle {
 		if (colony.getTotaldays()>=1000)
 			colony.setDeserted(true);
 		Env.p("\n",colony.getTotaldays(),colony.getFoodcount());
+	}
+	private void forAll(ArrayList<Person> people) {
+		for (int i=0;i<people.size();i++) {
+			
+		}
 	}
 }

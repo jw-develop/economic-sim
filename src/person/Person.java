@@ -2,57 +2,44 @@ package person;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+
+import Action.*;
 import core.Colony;
 import envir.Env;
-import occupation.*;
-import perishible.*;
 
-public abstract class Person {
-	public static HashMap<String,Object> trades;
-	
-	Colony col;
+public class Person {
 	String firstname;
 	String surname;
 	int appetite = 2000;
-	int aggravated = 0;
-	boolean veryaggrav = false;
 	double pace = 1;
 	
 	int cash;
 	int ownedfood;
 	ArrayList<Object> owned;
 	ArrayList<Occupation> jobs;
+	HashSet<Person,Tradeable> colonytrades;
 	
-	public Person(Colony col, String first, String sur,double pace) {
-		this.col = col;
+	public Person(Colony col,String first, String sur,double pace) {
 		this.firstname = first;
 		this.surname = sur;
 		this.pace = pace;
+		this.colonytrades = col.getTrades();
 		ownedfood = 1000;
 	}
-	
-	public abstract void act();
 
-	public boolean live() {
-		this.eat();
-		this.work();
-		return this.stay();
+	public void act(Colony colony) {
+		
 	}
 	
 	public void work() {}
-	public boolean stay(){
-		if (aggravated>2 & !veryaggrav) {
-			Env.p(this.getSurname()+" is very aggravated . . .");
-			veryaggrav = true;
-		}
-		return aggravated<4;
-	}
+
 	public void eat() {
 		if (ownedfood>500) {
-			trades.remove(trades.get(surname));
+			colonytrades.remove(this,45);
 		}
 		else if (col.getFoodcount()<500) {
-			trades.put(surname, new Perishible(1000));
+			trades.put(this, new Perishible(1000));
 		}
 		if (col.getFoodcount()<200) {
 			aggravated++;
@@ -62,15 +49,11 @@ public abstract class Person {
 			col.augFoodcount(-this.appetite);
 		}
 	}
-	public static void barter() {
-		
-	}
+	*/
+	public static void barter() {}
 
 	public int getAppetite() {
 		return appetite;
-	}
-	public void setAppetite(int appetite) {
-		this.appetite = appetite;
 	}
 	public String getSurname() {
 		return surname;

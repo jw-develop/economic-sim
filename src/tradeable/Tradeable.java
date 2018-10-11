@@ -1,15 +1,16 @@
 /**
  * 
  */
-package perishible;
+package tradeable;
 
 /**
  * @author jameswhite
  *
  */
-public class Perishible {
+public class Tradeable {
 	int q;
-	public Perishible(int q) {
+	int age;
+	public Tradeable(int q) {
 		this.q = q;
 	}
 	
