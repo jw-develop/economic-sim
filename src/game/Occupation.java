@@ -5,18 +5,16 @@ import java.util.ArrayList;
 public abstract class Occupation {
 	protected int years;
 	protected Colony colony;
-	Occupation(int years) {
-		this.years = years;
+	protected ArrayList<Good> owned;
+	//Production
+	Occupation(Colony col, ArrayList<Good> owned,Resource produced) {
+		this.owned = owned;
 	}
-	public void work(Colony col,ArrayList<Good> owned) {
-		work(owned);
-		work(col);
+	//Other
+	Occupation(int years,Colony col, ArrayList<Good> owned) {
+		
 	}
-	public void work(ArrayList<Good> owned) {
-		work();
+	public abstract void work();
+	public void setWorker(int years,Colony col) {
 	}
-	public void work(Colony col) {
-		work();
-	}
-	public void work() {}
 }

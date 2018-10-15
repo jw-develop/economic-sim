@@ -8,7 +8,11 @@ public class Colony {
 		Resource farmland = new Resource("food",1,.05);
 		//Resource forest = new Resource("wood",1000,.01);
 		
-		folks.add(new Person(this,"Walter","Smith",1,new Production(5,farmland)));
+		//folks.add(new Person(this,"Walter","Smith",1,new Production(5,farmland)));
+		Person jeff = new Person(this,"Walter","Smith");
+		jeff.addJob(new Production(5,farmland));
+		
+		
 		//folks.add(new Person(this,"Jeffrey","Davis",1.2));
 		//folks.add(new Person(this,"Shims","White",.7));
 	}
