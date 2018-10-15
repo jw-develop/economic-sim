@@ -1,0 +1,141 @@
+# Class Outline
+core
+	Colony
+		*Contains Colony-specific information.*
+	Cycle
+		*Passes time with calls to each colony member.*
+		*Prints stuff.*
+	RunLL
+		*Initiates Colonies and runs Cycle as long as people remain.*
+envir
+	Envir
+		*Contains static randomness and print methods*
+person
+	Person
+		*Contains Person-specific information
+		Worker
+		*
+	rawproductive
+		Hunter
+			*Hunts for food, high variability.
+		Farmer
+			*Grows food, seasonal variability.
+	processor
+		Acater
+economic
+	Good
+		*nameofgood,quantity, and age.*
+	
+# Each Day
+	-Cycle-
+	indiv.act()
+		-Person-
+		eat()
+			-= appetite
+		job.work(colony,owned)
+			int quantity = math;
+			owned.add(new Good(name
+		exchange()
+	indiv.isdead()
+		*Checks if dead and removes from list.*
+
+
+
+# Planned Class Additions
+
+# Person information
+	int cash;
+	int ownedfood;
+	ArrList owned;
+	ArrList jobs;
+	ArrList tradegoods;
+	act()
+	work()
+	eat()
+	exchange()
+	get/set
+
+*
+person
+	Person
+	production
+		Gatherers
+			Hunter
+			Farmer
+	processor
+		Craftsman
+		Salesmen
+		Scholars
+	services
+		Governor
+		Military
+		Religious
+		Entertainer
+	misc.
+		Criminal
+		Traveler
+*
+# Long Term planned Class Additions
+Crude potential list
+person
+	Person
+		Acrobat
+		Apothecarist
+		Architect
+		Armorer
+		Artist
+		Astrologer
+		Baker
+		Barrister
+		Bookbinder
+		Bowyer
+		Brewer
+		Bricklayer
+		Candlemaker
+		Carpenter
+		Cartographer
+		Clothier
+		Cook
+		Diplomat
+		Dyer
+		Engineer
+		Engraver
+		Farmer
+		Fisherman
+		Forester
+		Fortune-Teller
+		Furrier
+		Gardener
+		Glassblower
+		GrainMerchant
+		Gravedigger
+		Herald
+		Herbalist
+		Hunter
+		Innkeeper
+		Interpreter
+		Jester
+		Jeweler
+		Leatherworker
+		Locksmith
+		Messenger
+		Miner
+		Minstrel
+		Moneylender
+		Navigator
+		Painter
+		Peddler
+		Physician
+		Playwright
+		Politician
+		Potter
+		RatCatcher
+		Sailor
+		Scribe
+		Servant
+		Shipwright
+		Shoemaker
+		Spy
+		Stonecarver
+		Storyteller
+		Weaver

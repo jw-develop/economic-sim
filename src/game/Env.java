@@ -1,4 +1,4 @@
-package envir;
+package game;
 
 import java.util.Random;
 
