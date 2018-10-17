@@ -9,12 +9,20 @@ public class Colony {
 		//Resource forest = new Resource("wood",1000,.01);
 		this.availablejob = new Job(farmland);
 		
-		Person jeff = new Person(this,"Walter","Smith");
-		jeff.addSkill(new Skill("farming",5));
-		folks.add(jeff);
+		Person walter = new Person(this,"Walter","Smith");
+		walter.addSkill(new Skill("farming",5));
+		walter.addGood(new Good("food",5000));
+		folks.add(walter);
 		
-		//folks.add(new Person(this,"Jeffrey","Davis",1.2));
-		//folks.add(new Person(this,"Shims","White",.7));
+		Person shims = new Person(this,"Shims","White");
+		shims.addSkill(new Skill("farming",7));
+		shims.addGood(new Good("food",3000));
+		folks.add(shims);
+
+		Person babs = new Person(this,"Dej","Denver");
+		babs.addSkill(new Skill("farming",3));
+		babs.addGood(new Good("food",2500));
+		folks.add(babs);
 	}
 	private boolean deserted;
 	private int totaldays;

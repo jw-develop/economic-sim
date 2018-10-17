@@ -10,6 +10,6 @@ public class Job {
 
 	public Good work(int skilllevel) {
 		int quantity = source.CollectResource(1950);
-		return new Good(nameofgood,quantity);
+		return new Good(nameofgood,(int)(quantity*Env.gauss(.05)));
 	}
 }
