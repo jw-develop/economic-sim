@@ -7,6 +7,5 @@ public class RunLL {
 		Cycle cycle = new Cycle();
 		while (!colony.isDeserted())
 			cycle.nextDay(colony);
-		System.out.println("There is no one left in the colony.");
 	}
 }

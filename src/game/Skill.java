@@ -9,7 +9,7 @@ public class Skill {
 		this.typeofwork = typeofwork;
 	}
 
-	public int getYears() {
+	public int getAbility() {
 		return years;
 	}
 

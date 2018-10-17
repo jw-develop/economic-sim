@@ -5,11 +5,17 @@ import java.util.HashMap;
 
 public class Colony {
 	public Colony() {
-		Resource farmland = new Resource("food",1,.05);
-		//Resource forest = new Resource("wood",1000,.01);
-		this.availablejob = new Job(farmland);
+		//Worksites
+		//Resource abstract type
+			//Food v. other?
+		worksites.add(new Resource("Farmland","farming",50000,1900,.01));
+		worksites.add(new Resource("Forest","hunting",50000,2100,.05));
 		
-		Person walter = new Person(this,"Walter","Smith");
+		for (Resource site : worksites)
+			jobs.put(site.getWorkType(),new Job(site));
+		
+		//People
+		Person walter = new Person(this,"Charles","Smith");
 		walter.addSkill(new Skill("farming",5));
 		walter.addGood(new Good("food",5000));
 		folks.add(walter);
@@ -20,24 +26,27 @@ public class Colony {
 		folks.add(shims);
 
 		Person babs = new Person(this,"Dej","Denver");
-		babs.addSkill(new Skill("farming",3));
+		babs.addSkill(new Skill("hunting",3));
 		babs.addGood(new Good("food",2500));
 		folks.add(babs);
 	}
 	private boolean deserted;
+	private String desertionstate;
 	private int totaldays;
 	private ArrayList<Person> folks = new ArrayList<Person>();
-	private HashMap<Person,Good> tradegoods= new HashMap<Person,Good>();
 	
-	//private ArrayList<Resource> worksites = new ArrayList<Resource>();
-	//private HashMap<String,Job> jobs = new HashMap<String,Job>();
-	private Job availablejob;
+	private ArrayList<Resource> worksites = new ArrayList<Resource>();
+	private HashMap<String,Job> jobs = new HashMap<String,Job>();
 	
 	public boolean isDeserted() {
 		return deserted;
 	}
-	public void setDeserted(boolean deserted) {
-		this.deserted = deserted;
+	public String getDesertionstate() {
+		return desertionstate;
+	}
+	public void setDeserted(String desertionstate) {
+		this.desertionstate = desertionstate;
+		deserted = true;
 	}
 	public int getTotaldays() {
 		return totaldays;
@@ -55,20 +64,11 @@ public class Colony {
 		folks.remove(indiv);
 	}
 
-	public void addTrade(Person trader,Good tradegood) {
-		if (!tradegoods.containsKey(trader))
-			tradegoods.put(trader, tradegood);
-		/*
-		else
-			tradegoods.put(trader, mergeTradeables(tradegoods.get(trader),tradegood));
-			*/
+	public HashMap<String,Job> getJobs() {
+		return jobs;
 	}
-	
-	public void resolveTrades() {
-		
-	}
-	public Job getJob() {
-		return availablejob;
+	public ArrayList<Resource> getWorksites() {
+		return worksites;
 	}
 	//public void setJobs(HashMap<String, Job> jobs) {
 		//this.jobs = jobs;

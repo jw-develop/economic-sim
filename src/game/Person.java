@@ -1,6 +1,5 @@
 package game;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Person {
@@ -9,13 +8,13 @@ public class Person {
 	private boolean dead;
 	private int appetite = 2000;
 	private Skill skill;
-	private Job job;
+	private HashMap<String, Job> jobs;
 	private String deathtag;
 	
-	private HashMap<String,ArrayList<Good>> owned = new HashMap<String,ArrayList<Good>>();
+	private Inventory owned = new Inventory();
 	
 	public Person(Colony col,String first, String sur) {
-		job = col.getJob();
+		jobs = col.getJobs();
 		this.firstname = first;
 		this.surname = sur;
 		//skills = new ArrayList<Skill>(Arrays.asList(skills));
@@ -23,72 +22,40 @@ public class Person {
 	}
 
 	public void act() {
-		boolean ate = consume("food",appetite);
-		if (!ate)
-			kill();
-		Good yield = job.work(skill.getYears());
-		this.addGood(yield);
+		eat(appetite);
+		Job chosenjob = jobs.get(skill.getTypeofwork());
+		Good yield = chosenjob.work(skill.getAbility());
+		addGood(yield);
 	}
 	
-	private boolean consume(String goodname,int amount) {
-		ArrayList<Good> depleted = new ArrayList<Good>();
-		ArrayList<Good> consumeables = owned.get(goodname);
-		if (consumeables == null)
-			return false;
-		for (Good consuming : consumeables) {
-			if (consuming.getQuantity()<=amount) {
-				amount -= consuming.getQuantity();
-				depleted.add(consuming);
-			}
-			else {
-				consuming.lowerQuantity(amount);
-				break;
-			}
+	private void eat(int amount) {
+		int eaten = owned.consume("food",amount);
+		if (eaten>0) {
+			deathtag = "starved wanting "+eaten+" food!";
+			kill();
 		}
-		consumeables.removeAll(depleted);
-		if (consumeables.isEmpty()) {
-			deathtag = "starved wanting "+amount+" food!";
-			return false;
-		}
-		return true;
 	}
 	
 	public void addSkill(Skill skill) {
 		this.skill = skill;
 	}
+	
 	public void addGood(Good good) {
-		if (owned.get(good.getNameofGood())==null)
-			owned.put(good.getNameofGood(),new ArrayList<Good>());
-		ArrayList<Good> listofgoods = owned.get(good.getNameofGood());
-		listofgoods.add(good);
+		owned.acquire(good);
 	}
+
 	public void exchange() {
 		//colony.addTrade(this);
 	}
-	public void kill() {
-		this.dead = true;
-	}
-	public int getAmtOfGood(String nameofgood) {
-		ArrayList<Good> listofgoods = owned.get(nameofgood);
-		int quantity = 0;
-		for (Good thang : listofgoods)
-			quantity+=thang.getQuantity();
-		return quantity;
-	}
+	public void kill() {this.dead = true;}
 	
-	public ArrayList<Integer> getAmtOfEachGood(String nameofgood) {
-		ArrayList<Good> listofgoods = owned.get(nameofgood);
-		ArrayList<Integer> quantities = new ArrayList<Integer>();
-		for (Good thang : listofgoods)
-			quantities.add(thang.getQuantity());
-		return quantities;
-	}
-
-	public HashMap<String, ArrayList<Good>> getOwned() {
-		return owned;
+	public String toString(Person guy) {
+		return guy.getFullname();
 	}
 
 	public String getSurname() {return surname;}
+	
+	public Inventory getOwned() {return owned;}
 	
 	public String getFullname() {return firstname+" "+surname;}
 	
