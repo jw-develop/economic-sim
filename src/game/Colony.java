@@ -7,11 +7,11 @@ public class Colony {
 	public Colony() {
 		Resource farmland = new Resource("food",1,.05);
 		//Resource forest = new Resource("wood",1000,.01);
+		this.availablejob = new Job(farmland);
 		
-		//folks.add(new Person(this,"Walter","Smith",1,new Production(5,farmland)));
 		Person jeff = new Person(this,"Walter","Smith");
-		jeff.addJob(new Production(5,farmland));
-		
+		jeff.addSkill(new Skill("farming",5));
+		folks.add(jeff);
 		
 		//folks.add(new Person(this,"Jeffrey","Davis",1.2));
 		//folks.add(new Person(this,"Shims","White",.7));
@@ -20,6 +20,11 @@ public class Colony {
 	private int totaldays;
 	private ArrayList<Person> folks = new ArrayList<Person>();
 	private HashMap<Person,Good> tradegoods= new HashMap<Person,Good>();
+	
+	//private ArrayList<Resource> worksites = new ArrayList<Resource>();
+	//private HashMap<String,Job> jobs = new HashMap<String,Job>();
+	private Job availablejob;
+	
 	public boolean isDeserted() {
 		return deserted;
 	}
@@ -54,8 +59,10 @@ public class Colony {
 	public void resolveTrades() {
 		
 	}
-	public Good mergeTradeables(Good good1,Good good2) {
-		//If same type//
-		return new Good(good1.getNameofGood(),good1.getQuantity()+good2.getQuantity());
+	public Job getJob() {
+		return availablejob;
 	}
+	//public void setJobs(HashMap<String, Job> jobs) {
+		//this.jobs = jobs;
+	//}
 }

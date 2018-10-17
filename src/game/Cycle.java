@@ -24,7 +24,7 @@ public class Cycle {
 		//Circuit through population
 		for (Person indiv : people) {
 			indiv.act();
-			p("%s has %s food after eating.\n",indiv.getSurname(),indiv.getOwnedfood());
+			p("%s has %s food after eating.\n",indiv.getSurname(),indiv.getOwnedOfGood("food"));
 			p("",indiv.getFullname());
 			if (indiv.isDead()) {
 				dead.add(indiv);
@@ -32,7 +32,6 @@ public class Cycle {
 			}
 		}
 		for (Person indiv : dead) {
-
 			if (indiv.isDead()) {
 				p("%s has died!\n", deaths);
 				colony.killFolk(indiv);

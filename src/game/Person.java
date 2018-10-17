@@ -1,74 +1,71 @@
 package game;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 
 public class Person {
-	private Colony colony;
 	private String firstname;
 	private String surname;
 	private boolean dead;
 	private int appetite = 2000;
-	private ArrayList<Occupation> jobs;
+	private Skill skill;
+	private Job job;
 	
-	int cash;
-	int ownedfood;
-	ArrayList<Good> owned;
+	private HashMap<String,ArrayList<Good>> owned = new HashMap<String,ArrayList<Good>>();
 	
-	public Person(Colony col,String first, String sur,Occupation ...occupations) {
-		this.colony = col;
+	public Person(Colony col,String first, String sur) {
+		job = col.getJob();
 		this.firstname = first;
 		this.surname = sur;
-		jobs = new ArrayList<Occupation>(Arrays.asList(occupations));
-		owned = new ArrayList<Good>();
-		this.ownedfood = 10000;
+		//skills = new ArrayList<Skill>(Arrays.asList(skills));
 		this.dead = false;
 	}
 
 	public void act() {
-		eat();
-		for (Occupation job : jobs)
-			job.work();
-		exchange();
-	}
-
-	private void eat() {
-		if (ownedfood>2000)
-			ownedfood-=appetite;
-		else {
-			Env.p(surname+" has gone without food!\n");
+		boolean ate = consume("food",appetite);
+		if (!ate)
 			kill();
-		}
-		/*
-		if (ownedfood>5000) {
-			int toexchange = ownedfood - 2000;
-			ownedfood-=2000;
-			colony.addTrade(this,new Good("food",toexchange));
-		}
-		*/
+		Good yield = job.work(skill.getYears());
+		this.addGood(yield);
 	}
+	
+	private boolean consume(String goodname,int amount) {
+		ArrayList<Good> consumeables = owned.get(goodname);
+		if (consumeables == null)
+			return false;
+		for (Good consuming:consumeables) {
+			if (consuming.getQuantity()<=amount) {
+				amount -= consuming.getQuantity();
+				consumeables.remove(consuming);
+			}
+			else {
+				consuming.lowerQuantity(amount);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void addSkill(Skill skill) {
+		this.skill = skill;
+	}
+	public void addGood(Good good) {
+		ArrayList<Good> listofgoods = owned.get(good.getNameofGood());
+		listofgoods.add(good);
+	}
+	public ArrayList<Good> getOwnedOfGood(String nameofgood) {return owned.get(nameofgood);}
 	
 	public void exchange() {
 		//colony.addTrade(this);
 	}
-	public int getAppetite() {
-		return appetite;
-	}
-	public String getSurname() {
-		return surname;
-	}
-	public String getFullname() {
-		return firstname+" "+surname;
-	}
-	
-	public int getOwnedfood() {
-		return ownedfood;
-	}
-
-	public boolean isDead() {
-		return dead;
-	}
 	public void kill() {
 		this.dead = true;
 	}
+
+	public String getSurname() {return surname;}
+	
+	public String getFullname() {return firstname+" "+surname;}
+	
+	public boolean isDead() {return dead;}
+	
 }

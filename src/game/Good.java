@@ -8,9 +8,9 @@ package game;
  *
  */
 public class Good {
-	String nameofgood;
-	int quantity;
-	int age;
+	private String nameofgood;
+	private int quantity;
+	private int age;
 	public Good(String nameofgood,int q) {
 		this.nameofgood = nameofgood;
 		this.quantity = q;
@@ -20,14 +20,13 @@ public class Good {
 	public String getNameofGood() {
 		return nameofgood;
 	}
-	
+	public void lowerQuantity(int taken) {
+		quantity -= taken;
+	}
 	public int getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int q) {
-		this.quantity = q;
-	}
 	public int getValue(int price) {
-		return price*quantity;
+		return price*quantity+age;
 	}
 }

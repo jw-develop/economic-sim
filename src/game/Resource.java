@@ -1,17 +1,17 @@
 package game;
 
 public class Resource {
-	String nameofresource;
-	int dailyyield = 1950;
-	double volatility = .05;
+	String nameofyield;
+	int dailyyield;
+	double volatility;
 	int totalinlocation;
 	Resource(String name,int dailyyield,double volatility) {
-		this.nameofresource = name;
+		this.nameofyield = name;
 		this.volatility = volatility;
 		this.dailyyield = dailyyield;
 	}
 	public String getNameofresource() {
-		return nameofresource;
+		return nameofyield;
 	}
 	public double getVolatility() {
 		return volatility;
