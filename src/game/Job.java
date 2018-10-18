@@ -9,7 +9,7 @@ public class Job {
 	Job(Resource source) {
 		String worktype = source.getWorkType();
 		this.source = source;
-		nameofgood = yieldtype.get(worktype);
+		nameofgood = yieldtypes.get(worktype);
 	}
 
 	public Good work(int skilllevel) {

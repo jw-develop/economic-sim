@@ -1,16 +1,11 @@
 package game;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class Facts {
 	
-	public static HashMap<String,String> yieldtype = new HashMap<String,String>();
+	public static HashSet<String> goodtypes = new HashSet<String>();
 	
-	static {
-	yieldtype.put("farming","food");
-	yieldtype.put("hunting","food");
-	yieldtype.put("fishing","food");
-	yieldtype.put("woodcutting","wood");
-	yieldtype.put("mining","rock");
-	}
+	public static HashMap<String,String> yieldtypes = new HashMap<String,String>();
+	
 }

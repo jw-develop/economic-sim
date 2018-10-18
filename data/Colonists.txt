@@ -1,0 +1,8 @@
+Charles Smith
+farming 5
+5000 food
+
+Person walter = new Person(this,"Charles","Smith");
+walter.addSkill(new Skill("farming",5));
+walter.addGood(new Good("food",5000));
+folks.add(walter);

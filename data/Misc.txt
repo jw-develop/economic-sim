@@ -1,0 +1,16 @@
+food
+wood
+rock
+
+death
+
+food
+farming
+hunting
+fishing
+
+wood
+woodcutting
+
+rock
+mining
