@@ -6,19 +6,21 @@ import static game.Env.*;
  * @author jameswhite
  *
  */
-public class Cycle {
+public class Globe {
 	public static int date;
-	private int termination;
+	private int terminationday;
 	private ArrayList<Person> justdied = new ArrayList<Person>();
 	private ArrayList<Person> longdead = new ArrayList<Person>();
 	private boolean printnextday;
+	private boolean complete = false;
+	Colony colony = new Colony();
 	
-	public Cycle() {
-		termination = 50;
+	public Globe() {
+		terminationday = 50;
 		printnextday = true;
 	}
 	//Method for incrementing day.
-	public void nextDay(Colony colony) {
+	public void nextDay() {
 		
 		colony.incTotaldays();
 		ArrayList<Person> people = colony.getFolks();
@@ -27,7 +29,7 @@ public class Cycle {
 		
 		//Increment of days to print
 		int printinc = 20;
-		if (currentday % printinc == 0 || currentday == termination)
+		if (currentday % printinc == 0 || currentday == terminationday)
 			printnextday = true;
 		
 		//Activating printnextday
@@ -69,7 +71,7 @@ public class Cycle {
 		//Termination conditions
 		if (people.isEmpty())
 			colony.setDeserted("All colonists have perished . . .");
-		else if (colony.getTotaldays()>=termination) {
+		else if (colony.getTotaldays()>=terminationday) {
 			String survivors = "";
 			String perished = "";
 			for (Person indiv : people)
@@ -79,7 +81,17 @@ public class Cycle {
 			colony.setDeserted("Survivors: "+survivors+"\n\nPerished: "+perished);
 		}
 		
-		if (colony.isDeserted())
+		if (colony.isDeserted()) {
 			p(colony.getDesertionstate());
+			finishSimulation();
+		}
 	}
+	public boolean isComplete() {
+		return complete;
+	}
+	public void finishSimulation() {
+		complete = true;
+	}
+	
+	
 }

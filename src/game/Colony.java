@@ -30,7 +30,7 @@ public class Colony {
 		babs.addGood(new Good("food",2500));
 		folks.add(babs);
 	}
-	private boolean deserted;
+	private boolean deserted = false;
 	private String desertionstate;
 	private int totaldays;
 	private ArrayList<Person> folks = new ArrayList<Person>();
