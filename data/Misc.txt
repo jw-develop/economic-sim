@@ -1,16 +1,126 @@
-food
-wood
-rock
+<<<Template>>>
+-good-
+jobthatproducesgood
+*descriptionofjob
+job2thatproducesgood
 
-death
+-good2-
+job3thatproducesgood2
+*descriptionofjob3
 
-food
-farming
-hunting
-fishing
+<<<Data>>>
 
-wood
-woodcutting
+<<Production Types>>
+-food-
+farmer
+*Farms farmland.
+hunter
+*Hunts forest.
+fisher
+*Fishes lake.
 
-rock
-mining
+-rock-
+miner
+
+-wood-
+lumberjack
+*Lumbers forest.
+
+<<Processor Types>>
+-armor-
+armorer
+
+-art-
+artist
+
+-book-
+bookbinder
+scribe
+
+-burial-
+gravedigger
+
+-crafts-
+carpenter
+engraver
+glassblower
+jeweler
+potter
+
+-luxury goods-
+candlemakers
+locksmith
+
+-map-
+cartographer
+
+-medicine-
+apothecarist
+*Produces medicine.
+herbalist
+
+-metal-
+furnacier
+
+-premium food-
+baker
+brewer
+cook
+
+-textiles-
+clothier
+dyer
+leatherworker
+shoemaker
+weaver
+
+-weapon-
+bowyer
+
+<<Service Types>>
+-construction-
+architect
+bricklayer
+engineer
+painter
+shipwright
+stonecarver
+
+-entertainment-
+acrobat
+jester
+minstrel
+playwright
+storyteller
+
+-hospitality-
+innkeeper
+servant
+
+-maintenence-
+gardener
+physician
+ratcatcher
+
+-politics-
+diplomat
+forester
+herald
+messenger
+politician
+spy
+
+-spiritual-
+astrologer
+fortune teller
+
+-transaction-
+furrier
+grainmerchant
+interpreter
+moneylender
+peddler
+
+-travel-
+navigator
+sailor
