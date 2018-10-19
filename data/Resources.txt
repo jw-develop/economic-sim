@@ -1,1 +1,18 @@
-janktown
+<<<Template>>>
+resourcename
+appropriateworktype
+startingquantity
+typicalyield (Eventually a function for 
+volatility
+
+<<<Data>>>
+
+
+	 * 	//Worksites
+		//Resource abstract type
+		//Food v. other?
+		worksites.add(new Resource("Farmland","farming",50000,1900,.01));
+		worksites.add(new Resource("Forest","hunting",50000,2100,.05));
+		
+		for (Resource site : worksites)
+			jobs.put(site.getWorkType(),new Job(site));
