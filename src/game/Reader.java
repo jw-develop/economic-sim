@@ -10,54 +10,21 @@ public class Reader {
 	private String currentline;
 	private Scanner input;
 	
-	public static String[] keywordarray = new String[] { 
-			"Resource",
-			"Person",
-			"Job"
-			};
-	
-	public static Set<String> keywords = new HashSet<>(Arrays.asList(keywordarray));
-	
 	public void fillGlobe(Globe globe) throws IOException {
 		try {
+            //Should even have a file explaining which input method to link to each .txt.
 			Scanner miscinput = new Scanner(new FileInputStream("data/Misc.txt"));
 			Scanner personinput = new Scanner(new FileInputStream("data/Colonists.txt"));
 			Scanner resourceinput = new Scanner(new FileInputStream("data/Resources.txt"));
 			
-			input = miscinput;
-			while(readUntil("death")) {
-				p("early %s\n",currentline);
-				goodtypes.add(currentline);
-			}
-			while(readRest()) {
-				p("later %s\n",currentline);
-				while (readUntil(goodtypes)) {
-					String key = currentline;
-					p("later %s\n",currentline);
-					while((currentline = input.nextLine()) != null || !goodtypes.contains(goodtypes)) {
-						p("later %s\n",currentline);
-						yieldtypes.put(currentline, key);
-					}
-				}
-			}
-
-			input.close();
-			
-			/*
-			String[] words = currentline.split(" ");
-			String guideword = words[0];
-			if (guideword == "")
-			
-			if (words[])
-			if (keywords.contains(words[0])) {
-				guideword = words[0];
-				if (guideword=="Resource") {
-					
-				}
-		    for (String word : words) {
-		        
-		    }
-		    */
+            //An anonymous class could likely make this much more streamlined.
+            makeMisc(miscinput);
+            makeColonists(personinput);
+            makeResources(resourceinput);
+            
+            miscinput.close();
+            personinput.close();
+            resourceinput.close();
 		}
 		catch(Exception re) {
             System.out.println(re.getMessage());
@@ -66,63 +33,77 @@ public class Reader {
 		p("%s\n",goodtypes);
 		p("%s\n",yieldtypes);
 	}
+    
+    private void makeAll(ArrayList<Scanner> inputstreams) {
+        for (Scanner current : inputstreams) {
+            input = current;
+            //Polymorphic call to anonymous classes, to pull appropriate action.
+            boolean part1 = true;
+            while(existsLine() && !currentline.equals("<<<Data>>>");
+            while(hasLine()) {
+                //Object.make***
+            }
+            input.close();
+        }
+    }
+    
+    private void makeMisc(Scanner input) {
+        if (hasChar('<') {
+            //Or remove <<>>,types, then set remaining string as class to 
+            
+            if (currentline.equals("<<Production Types>>") {
+                //class currentclass = class.fromname(entry);
+            }
+            else if (currentline.equals("<<Service Types>>") {
+                
+            }
+            else if (currentline.equals("<<Processing Types>>") {
+                
+            }
+            else
+                System.out.exit("Fatal read error");
+            }
+        else if (hasChar('-') {
+            //Store word w/0 "-" in currentgood;
+            goodtypes.add(currentgood);
+        }
+        else
+            yieldtypes.put(currentline,currentgood);
+    }
+    
 	private void makeColonists(Scanner input) {
-		
+        if (hasChar("<")
+            
+
+        String[] words = currentline.split(" ");
+		String firstword = words[0];
+			if (yieldtypes.keySet().contains(firstword))
+			
+            
+firstname surname
+skillname yearsofexperience
+skillname yearsofexperience2
+ownedgoodtype quantity
+ownedgoodtype2 quantity2
+		    */
 	}
-	private void makeResources(Scanner input) {}
+	private void makeResources(Scanner input) {
+    
+    }
 	
 	private boolean readUntil(String terminator) {
-		if (!input.hasNextLine() || terminator.equals(currentline))
-			return false;
-		currentline = input.nextLine();
-		return true;
+		return hasLine() && terminator.equals(currentline);
 	}
 	private boolean readUntil(HashSet<String> termination) {
-		if (!input.hasNextLine())
-			return false;
-		currentline = input.nextLine();
-		return !termination.contains(currentline);
+		return hasLine() && termination.contains(currentline);
 	}
-	private boolean readRest() {
-		if (!input.hasNextLine())
+    private boolean hasChar(char a) {
+        return currentline[0].equals(a);
+    }
+	private boolean existsLine() {
+        if (!input.hasNextLine())
 			return false;
 		currentline = input.nextLine();
 		return true;
 	}
-	private void incrementline() {
-		
-	}
-		
-		
-	/*
-	 * 	//Worksites
-		//Resource abstract type
-		//Food v. other?
-		worksites.add(new Resource("Farmland","farming",50000,1900,.01));
-		worksites.add(new Resource("Forest","hunting",50000,2100,.05));
-		
-		for (Resource site : worksites)
-			jobs.put(site.getWorkType(),new Job(site));
-		
-		//People
-		Person walter = new Person(this,"Charles","Smith");
-		walter.addSkill(new Skill("farming",5));
-		walter.addGood(new Good("food",5000));
-		folks.add(walter);
-		
-		Person shims = new Person(this,"Shims","White");
-		shims.addSkill(new Skill("farming",7));
-		shims.addGood(new Good("food",3000));
-		folks.add(shims);
-
-		Person babs = new Person(this,"Dej","Denver");
-		babs.addSkill(new Skill("hunting",3));
-		babs.addGood(new Good("food",2500));
-		folks.add(babs);
-	 */
 }
-                
-                
-                
-                
- 
