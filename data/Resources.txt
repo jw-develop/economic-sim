@@ -1,11 +1,29 @@
 <<<Template>>>
-resourcename
+-resourcename-
 appropriateworktype
-startingquantity
-typicalyield (Eventually a function for 
-volatility
+typicalyield (Eventually a function for skill/yield)
+startingquantity volatility
+regenmin regenavg regenmax
+
+//Make certain resources doubly contingent, eg. forest?
 
 <<<Data>>>
+-Farmland-
+farmer
+1900
+50000 .01
+30000 50000 80000
+
+-Forest-
+hunter
+2100
+30000 .05
+20000 30000 40000
+
+lumberjack
+2500
+40000 .02
+20000 30000 40000
 
 
 	 * 	//Worksites
@@ -13,6 +31,3 @@ volatility
 		//Food v. other?
 		worksites.add(new Resource("Farmland","farming",50000,1900,.01));
 		worksites.add(new Resource("Forest","hunting",50000,2100,.05));
-		
-		for (Resource site : worksites)
-			jobs.put(site.getWorkType(),new Job(site));
