@@ -1,4 +1,4 @@
-package game;
+package simulator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +8,11 @@ public class Colony {
 		//Worksites
 		//Resource abstract type
 			//Food v. other?
+		
+		ReadTypes typeinput = new ReadTypes("data");
+    	typeinput.read();
+		
+    	/*
 		worksites.add(new Resource("Farmland","farming",50000,1900,.01));
 		worksites.add(new Resource("Forest","hunting",50000,2100,.05));
 		
@@ -29,6 +34,7 @@ public class Colony {
 		babs.addSkill(new Skill("hunting",3));
 		babs.addGood(new Good("food",2500));
 		folks.add(babs);
+		*/
 	}
 	private boolean deserted = false;
 	private String desertionstate;

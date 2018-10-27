@@ -1,4 +1,4 @@
-package game;
+package simulator;
 
 public class Skill {
 	private int years;

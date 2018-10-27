@@ -1,7 +1,7 @@
 /**
  * 
  */
-package game;
+package simulator;
 
 /**
  * @author jameswhite
