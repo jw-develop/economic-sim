@@ -1,30 +1,24 @@
-package simulator;
-
-import java.util.HashMap;
+package simulation;
 
 public class Person {
 	private String firstname;
 	private String surname;
 	private boolean dead;
 	private int appetite = 2000;
-	private Skill skill;
-	private HashMap<String, Job> jobs;
 	private String deathtag;
 	
 	private Inventory owned = new Inventory();
 	
-	public Person(Colony col,String first, String sur) {
-		jobs = col.getJobs();
+	public Person(String first, String sur) {
 		this.firstname = first;
 		this.surname = sur;
-		//skills = new ArrayList<Skill>(Arrays.asList(skills));
+		owned.acquire(new Good("food",3000));
 		this.dead = false;
 	}
 
 	public void act() {
 		eat(appetite);
-		Job chosenjob = jobs.get(skill.getTypeofwork());
-		Good yield = chosenjob.work(skill.getAbility());
+		Good yield = new Good("food",1950);
 		addGood(yield);
 	}
 	
@@ -36,21 +30,14 @@ public class Person {
 		}
 	}
 	
-	public void addSkill(Skill skill) {
-		this.skill = skill;
-	}
-	
 	public void addGood(Good good) {
 		owned.acquire(good);
 	}
 
-	public void exchange() {
-		//colony.addTrade(this);
-	}
 	public void kill() {this.dead = true;}
 	
-	public String toString(Person guy) {
-		return guy.getFullname();
+	public String toString() {
+		return this.getFullname();
 	}
 
 	public String getSurname() {return surname;}

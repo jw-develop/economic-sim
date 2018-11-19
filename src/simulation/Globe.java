@@ -1,10 +1,10 @@
-package simulator;
+package simulation;
 import java.util.ArrayList;
-import static game.Env.*;
+
+import simulation.Person;
 
 /**
  * @author jameswhite
- *
  */
 public class Globe {
 	public static int date;
@@ -12,19 +12,19 @@ public class Globe {
 	private ArrayList<Person> justdied = new ArrayList<Person>();
 	private ArrayList<Person> longdead = new ArrayList<Person>();
 	private boolean printnextday;
-	private boolean complete = false;
+	private boolean terminated = false;
 	Colony colony = new Colony();
 	
 	public Globe() {
 		terminationday = 50;
 		printnextday = true;
 	}
+	
 	//Method for incrementing day.
 	public void nextDay() {
 		
 		colony.incTotaldays();
 		ArrayList<Person> people = colony.getFolks();
-		ArrayList<Resource> worksites = colony.getWorksites();
 		int currentday = colony.getTotaldays();
 		
 		//Increment of days to print
@@ -86,8 +86,8 @@ public class Globe {
 			finishSimulation();
 		}
 	}
-	public boolean isComplete() {
-		return complete;
+	public boolean isDone() {
+		return terminated;
 	}
 	public void finishSimulation() {
 		complete = true;
