@@ -6,10 +6,10 @@ public class RunGlobe {
 		
 		Globe earth = new Globe();
 		
-		Disp.display("New world created");
+		Disp.display("Initialized\n");
 		while (earth.isDone())
 			earth.nextDay();
 		
-		Disp.display("New world terminated");
+		Disp.display("Completed\n");
 	}
 }
